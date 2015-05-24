@@ -1,4 +1,4 @@
- ## This file provide the detaieled infomation about the variable used in the project
+# This file provide the detaieled infomation about the variable used in the project
 
 > Variables
 * Commonly used variable

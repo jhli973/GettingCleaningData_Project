@@ -1,5 +1,4 @@
-# GettingCleaningData_Project
-The project for this course
+# GettingCleaningData_Project for Coursera course "Getting and Cleaning Data"
 
 # Introduction about the how the script function
 
@@ -15,7 +14,7 @@ download.file(url,"run.zip", mode="wb")
 *Unzip data
 unziprun<-unzip("run.zip")
 
-##Get the information about the data
+## 2. Get the information about the data
 *read readme file
 readme<-readLines(unziprun[4])
 
@@ -23,7 +22,7 @@ readme<-readLines(unziprun[4])
 features_info<-readLines(unziprun[4])
 
 
-### 2. Read the data from the unziped files
+## 2. Read the data from the unziped files
 *read test data
 X_test<-read.table(unziprun[15])
 subject_test<-read.table(unziprun[14])
@@ -40,17 +39,20 @@ features<-read.table(unziprun[2])
 *read activity from the unziped files
 activity<-read.table(unziprun[1])
 
-## 3. Cleanning the data
+## 4. Cleanning the data
 *name X_test and X_train data
 names(X_test)<-as.character(features[,2])
 names(X_train)<-as.character(features[,2])
 
-## Extract/Subset the mean and std data, someone sue the first two command which remove meanFreq() data
-#X_test_sub<-X_test[, as.vector(grep("(.*)mean\\(\\)(.*)|(.*)std\\(\\)", as.character(features[,2]), value=FALSE))]
-#X_train_sub<-X_train[, as.vector(grep("(.*)mean\\(\\)(.*)|(.*)std\\(\\)", as.character(features[,2]), value=FALSE))]
-
-X_test_sub<-X_test[, as.vector(grep("mean|std", as.character(features[,2]), value=FALSE))]
-X_train_sub<-X_train[, as.vector(grep("mean|std", as.character(features[,2]), value=FALSE))]
+*Extract/Subset the mean and std data, someone sue the first two command which remove meanFreq() data
+  
+   + Option one
+   X_test_sub<-X_test[, as.vector(grep("(.*)mean\\(\\)(.*)|(.*)std\\(\\)", as.character(features[,2]), value=FALSE))]  
+   X_train_sub<-X_train[, as.vector(grep("(.*)mean\\(\\)(.*)|(.*)std\\(\\)", as.character(features[,2]), value=FALSE))]
+  
+   + Option two (here I use this option)
+   X_test_sub<-X_test[, as.vector(grep("mean|std", as.character(features[,2]), value=FALSE))]
+   X_train_sub<-X_train[, as.vector(grep("mean|std", as.character(features[,2]), value=FALSE))]
 
 *combine data, subject and test/activity
 > X_test_data<-cbind(X_test_sub, subject_test, Y_test)
@@ -73,10 +75,10 @@ final_data<-rbind(X_test_data_act, X_train_data_act)
 names(final_data)[1]<-"activityNo"
 names(final_data)[82]<-"activityName"
 
-## 4. return the tidy data
+## 5. return the tidy data
 final_data
 
-## 5. Summarize the data
+## 6. Summarize the data
 
 *load the package "reshape2"
 library(reshape2)
