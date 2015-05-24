@@ -1,8 +1,8 @@
 # GettingCleaningData_Project for Coursera course "Getting and Cleaning Data"
 
-# Introduction about the how the script function
+#### Introduction about the how does the script function
 
-## To run the script (run_analysis.R), you need to install package "reshape2" and basic R package
+#### To run the script (run_analysis.R), you need to install package "reshape2" and basic R package
 install.packages("reshapr2")
 library(reshape2)
 
